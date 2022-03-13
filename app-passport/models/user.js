@@ -8,6 +8,11 @@ const userSchema = new Schema({
         required: true,
         minlength: 3
     },
+    name: {
+        type: String,
+        required: true,
+        min: 5
+    },
     password: {type: String,
         required: true,
         minlength: 5
@@ -18,12 +23,26 @@ const userSchema = new Schema({
     dob: {type: Date,
         required: true
     },
+    city: {
+        type: String,
+        required: true,
+        min: 5
+    },
+    state: {
+        type: String,
+        required: true,
+        min: 5
+    },
     profilePicture: {
         type: String
     },
     hobbies: [ {
         type: String
     }],
+    phoneNumber: {
+    type: String,
+    min: 9
+    },
 }, {timestamps: true})
 
 const User = mongoose.model('User', userSchema);

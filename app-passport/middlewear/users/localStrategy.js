@@ -1,8 +1,10 @@
+
+   
 const passport = require('passport');
 const Strategy  = require('passport-local');
 const User = require('../../models/user');
 const { comparePassword } = require('./passwordHasser');
-
+const session = require('express-session')
 
 
 passport.serializeUser((user, done) => {
@@ -10,20 +12,19 @@ passport.serializeUser((user, done) => {
   console.log(user.id)
   return done(null, user.id)});
 
-console.log('Not Going In');
 passport.deserializeUser(async (id, done) => {
 console.log('Deserializing User');
 console.log(id);
   try {
     const user = await User.findById(id);
-    if (!user){ 
-        done( null, false, { msg: 'User not found'})
+    if (user == null){ 
+        return done( null, false, { message: 'User not found'})
         }
-      console.log(user);
-      done(null, user);
+      console.log("++++++++++");
+      return done(null, user);
   } catch (err) {
       console.log(err);
-      done(err, null, { msg: 'There was an error'});
+      done(err, null, { message: 'There was an error'});
     }
 })
 
@@ -35,20 +36,25 @@ passport.use(
     async (email, password, done) => {
       try {
         if (!email || !password){
-            console.log('---')
-             done(null, false, {msg: "No Matching Credentials"});
+            console.log('HELLO')
+             return done(null, false, {message: "No Matching Credentials"});
         } 
+        console.log(email)
         const possibleUser = await User.findOne({ email });
-        if (!possibleUser){
-            console.log('---')
-             done(null, false, {msg: "No Matching Credentials"});
+        console.log(possibleUser)
+        if (possibleUser == null){
+            console.log('NO ONE IS HOME')
+             return done(null, null, {message: "Wrong Email"});
         } 
+        console.log('password')
+        console.log(password)
         const foundUser = comparePassword(password,  possibleUser.password);
         if (foundUser) {
-           done(null,  possibleUser);
+          console.log("======================================")
+           return done(null,  possibleUser);
         } else {
           console.log(`No Matching Credentials`);
-           done(null, false);
+           return done(null, false, {message: "Wrong Password"} );
         }
       } catch (err) {
         console.log(err);
@@ -58,4 +64,3 @@ passport.use(
     }
   )
 );
-

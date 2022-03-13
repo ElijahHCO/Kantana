@@ -1,12 +1,16 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
-
+const methodOverride = require('method-override');
+const session = require('express-session');
 require('dotenv').config()
 const app = express()
 const passport = require('passport');
-const session = require('express-session')
+const User = require('./models/user')
+const MongoDBStore = require('connect-mongodb-session')(session);
+const store = new MongoDBStore({
+    uri: process.env.MONGO_URI,
+    collection: 'mySessions'
+});
 require('./middlewear/users/localStrategy')
-
 const flash =  require('express-flash')
 const userRouter = require('./controllers/userController');
 const authRouter = require('./controllers/auth');
@@ -19,21 +23,24 @@ require('./mongodbs/app')
 
 
 
-app.use(cookieParser());
+
+//using in out app
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+
+//passport stuff
+
+app.use(express.static("public"))
 app.use(flash())
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { 
-        secure: true}
+    store: store,
 }))
-app.use(passport.initialize());
 app.use(passport.session());
-
-//using in out app
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(passport.initialize());
 
 
 
@@ -49,30 +56,16 @@ const logged = require('./middlewear/users/loggedUser');
 
 
 app.use(requestAndMethod)
-app.use('/', logged)
+app.use('/user', logged)
 
 
 
 
 
 
-
-
-//usgin middlewear functions that are global
-
-app.get('/', checkAuthentication, function(req,res){
-    res.redirect('/login')
-});
-function checkAuthentication(req,res,next){
-    if(req.isAuthenticated()){
-        next();
-    } else{
-        res.send("STOPPP");
-    }
-}
-
-
-
+//session cheker so we don't have to render the user object everytime they loggin lol
+const appCheker = require('./middlewear/authCheck')
+app.use('/', appCheker)
 app.use('/', authRouter)
 app.use('/user', userRouter)
 
