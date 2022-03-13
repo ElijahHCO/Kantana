@@ -7,9 +7,10 @@ const hashedPassword = (password) => {
       return passWithSalt
 }
 
-const comparePassword = async (typedPass, hashPass) => {
+const comparePassword = (typedPass, hashPass) => {
   try{
-    const okPass = await bcrypt.compareSync(typedPass, hashPass)
+    const okPass = bcrypt.compareSync(typedPass, hashPass)
+    console.log(okPass)
     return okPass
   }catch(err){
     return false

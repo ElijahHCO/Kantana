@@ -5,13 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <% if(isLoggedIn){ %>
-        <h1>Welcome back <%= username %>!</h1>
-    <% } else { %>
-        <a href="/users/login">Please log in</a>
-    <% } %>
+    <%= userObject.username %>
+    <br><br><br>
+    <% userObject.hobbies.forEach(Hobby => { %>
+            <%= userObject.hobbies %>
+
+    <% }); %>
+
+<form action="/logout" method="POST">
+    <button type="submit">LOG OUT</button>
+</form>
+
+<a href="/<%= userObject._id %>/edit ">
+    <button>
+        Edit Profile
+    </button>
+</a>
 </body>
 </html>

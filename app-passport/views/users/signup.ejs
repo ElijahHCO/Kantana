@@ -13,24 +13,31 @@
     <script src="/js/new-user.js"></script>
 </head>
 <body>
+    <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
     <h1>Form to register as a new user</h1>
-    <form action="/users/singup" method="POST">
+    <form action="/new" method="POST">
         <label for="username">Username:</label>
         <input type="text" name="username" required min="5" max="25">
-        <br><br><br>
-        <label for="displayName">DisplayName:</label>
-        <input type="text" name="displayName" required min="5" max="25" max="25">
-        <br><br><br>
-        <label for="displayName">Email:</label>
-        <input type="email" name="email" required min="5" max="25" max="25">
-        <br><br><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" required min="5" max="25">
         <br><br><br>
         <label for="password">Password:</label>
         <input type="password" name="passwordComp" required min="5" max="25">
         <br><br><br>
-        <label for="password">Age:</label>
+        <label for="name">name</label>
+        <input type="password" name="name" required min="5" max="25">
+        <br><br><br>
+        <label for="">Email:</label>
+        <input type="email" name="email" required min="5" max="25" max="25">
+        <br><br><br>
+        <label for="">City</label>
+        <input type="text" name="city" required min="5" max="25" max="25">
+        <br><br><br>
+        <label for="">state</label>
+        <input type="text" name="state" required min="5" max="25" max="25">
+        <br><br><br>
+
+        <label for="age">DOB</label>
         <input type="date" name="dob" required min="1930-01-01" max="2011-01-01">>
         <br><br><br>
         <button type="submit" id="singup">Register</button>
