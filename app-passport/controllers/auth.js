@@ -23,9 +23,10 @@ router.post('/new', userExists , async (req, res)=>{
     const {username, email, dob} = req.body
     console.log(req.body.password)
     const password = hashedPassword(req.body.password)
+    req.body.password = password
     console.log(password)
     try{
-        const newUser = await User.create({username, password, email, dob})
+        const newUser = await User.create(req.body)
         console.log(newUser )
         res.redirect('/login')
     }catch(err){ 
@@ -47,15 +48,11 @@ router.get('/register',   backtoProfile, (req, res) => {
   res.render("users/signup.ejs")
 })
 
-router.get('/home', loggedUser ,async (req, res)=> {
-  try{
+router.get('/home', loggedUser ,(req, res)=> {
     res.render('home.ejs')
-  }catch(err){
-    res.redirect('/login')
-  }
 })
 
-router.get('/:id/edit', loggedUser,async (req, res)=>{
+router.get('/edit/:id', loggedUser,async (req, res)=>{
   try{
     console.log('ok')
       const user = await User.findById(req.session.passport.user)
@@ -63,10 +60,22 @@ router.get('/:id/edit', loggedUser,async (req, res)=>{
         user: user
       })
   }catch(err){
-      res.redirect('/home').send({message: "NOT NOW PLEASE LATER THANKS!"})
+    console.log('======================================>')
+    console.log(err)
+      res.redirect('/home')
   }
 })
 
+router.put('/edit/:id', async (req, res)=>{
+  try{
+    const updated = await User.findByIdAndUpdate(req.session.passport.user, req.body)
+    console.log(updated)
+    res.redirect(`/home`)
+  }catch(err){
+    console.log(err)
+    res.redirect(`/home`)
+  }
+})
 
 
 

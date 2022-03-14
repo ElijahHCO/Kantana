@@ -23,11 +23,10 @@ require('./mongodbs/app')
 
 
 
-
+app.use(methodOverride('_method'))
 //using in out app
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
 
 //passport stuff
 

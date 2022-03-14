@@ -7,18 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-    <%= userObject.username %>
+    <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
+
+
+
+    <h1><%= userObject.username %></h1>
+    <h1><%= userObject.name %></h1>
+
     <br><br><br>
     <% userObject.hobbies.forEach(Hobby => { %>
             <%= userObject.hobbies %>
 
     <% }); %>
-
+    <% if(userObject.city){ %> 
+    <p> <%= userObject.city %> , <%=  userObject.state %>   </p>  
+    <% } %> 
 <form action="/logout" method="POST">
     <button type="submit">LOG OUT</button>
 </form>
 
-<a href="/<%= userObject._id %>/edit ">
+<a href="/edit/<%= userObject._id %> ">
     <button>
         Edit Profile
     </button>

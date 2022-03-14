@@ -16,15 +16,15 @@ passport.deserializeUser(async (id, done) => {
 console.log('Deserializing User');
 console.log(id);
   try {
-    const user = await User.findById(id);
-    if (user == null){ 
+     const user = await User.findById(id);
+      if (!user){ 
         return done( null, false, { message: 'User not found'})
-        }
+      }
       console.log("++++++++++");
       return done(null, user);
   } catch (err) {
       console.log(err);
-      done(err, null, { message: 'There was an error'});
+      done(err, false, { message: 'There was an error'});
     }
 })
 
@@ -44,7 +44,7 @@ passport.use(
         console.log(possibleUser)
         if (possibleUser == null){
             console.log('NO ONE IS HOME')
-             return done(null, null, {message: "Wrong Email"});
+             return done(null, false, {message: "Wrong Email"});
         } 
         console.log('password')
         console.log(password)

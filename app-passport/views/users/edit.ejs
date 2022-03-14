@@ -7,9 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <% if (messages.error) { %>
-        <%= messages.error %>
-      <% } %>
     <form action="/edit/<%=userObject._id%>?_method=PUT" method="POST">
         Name: <input type="text" name="name" <% if(userObject.name){ %>
             value="<%=userObject.name%>" 
@@ -18,13 +15,18 @@
             <br>
         Email: <input type="text" name="toppings" value="<%=userObject.email%>" required>
         <br>
-        hobbies: <input type="text" name="tasty" <% if(userObject.name){ %>
+        hobbies: <input type="text" name="tasty" <% if(userObject.hobbies){ %>
             value="<%=userObject.hobbies%>" 
             <% } %> 
             required>
             <br>
         City: <input type="text" name="city" <% if(userObject.city){ %>
             value="<%=userObject.name%>" 
+            <% } %> 
+            required>
+            <br>
+        state: <input type="text" name="state" <% if(userObject.state){ %>
+            value="<%=userObject.state%>" 
             <% } %> 
             required>
             <br>
