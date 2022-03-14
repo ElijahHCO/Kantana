@@ -7,14 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/users/login" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" required>
+    <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
+    <form action="/login" method="POST">
+        <label for="email">Email:</label>
+        <input type="text" name="email" required>
         <br><br><br>
         <label for="password">Password:</label>
         <input type="password" name="password">
         <br><br><br>
         <button type="submit">Login</button>
     </form>
+   <a href="/register">
+       <button>
+           SignUp
+       </button>
+   </a>
 </body>
 </html>

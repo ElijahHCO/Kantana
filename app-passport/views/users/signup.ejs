@@ -5,32 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"></script>
-    <script src="/js/new-user.js"></script>
 </head>
 <body>
+    <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
     <h1>Form to register as a new user</h1>
-    <form action="/users/singup" method="POST">
+    <form action="/new" method="POST">
         <label for="username">Username:</label>
         <input type="text" name="username" required min="5" max="25">
-        <br><br><br>
-        <label for="displayName">DisplayName:</label>
-        <input type="text" name="displayName" required min="5" max="25" max="25">
-        <br><br><br>
-        <label for="displayName">Email:</label>
-        <input type="email" name="email" required min="5" max="25" max="25">
         <br><br><br>
         <label for="password">Password:</label>
         <input type="password" name="password" required min="5" max="25">
         <br><br><br>
-        <label for="password">Password:</label>
-        <input type="password" name="passwordComp" required min="5" max="25">
+        <label for="name">name</label>
+        <input type="text" name="name" required min="5" max="25">
         <br><br><br>
-        <label for="password">Age:</label>
+        <label for="">Email:</label>
+        <input type="email" name="email" required min="5" max="25" max="25">
+        <br><br><br>
+        <label for="">City</label>
+        <input type="text" name="city" required min="5" max="25" max="25">
+        <br><br><br>
+        <label for="">state</label>
+        <input type="text" name="state" required min="5" max="25" max="25">
+        <br><br><br>
+
+        <label for="age">DOB</label>
         <input type="date" name="dob" required min="1930-01-01" max="2011-01-01">>
         <br><br><br>
         <button type="submit" id="singup">Register</button>
