@@ -20,15 +20,17 @@ router.post('/login',
 
 //make new user
 router.post('/new', userExists , async (req, res)=>{
-    const {username, email, dob} = req.body
-    console.log(req.body.password)
     const password = hashedPassword(req.body.password)
     req.body.password = password
     console.log(password)
     try{
         const newUser = await User.create(req.body)
-        console.log(newUser )
-        res.redirect('/login')
+        req.logIn(newUser, (err) => {
+          if (err) {
+              return next(err);
+          }
+              return res.redirect('/login');
+      })
     }catch(err){ 
         console.log(err)
         console.log('breakig is learning')
@@ -87,16 +89,15 @@ router.post('/logout', (req, res)=>{
   
 })
 
-
-router.get('/:id/profilehere', (req, res) => {
-  res.send("edit profile here")
+router.delete('/user/:id', async (req, res)=>{
+  try{
+      await User.findByIdAndDelete(req.session.passport.user)
+      res.redirect('/register')
+  }catch(err){
+      res.sendStatus(500)
+  }
 })
 
-
-
-router.get('/id/friends', (req, res) => {
-  res.send("friends here")
-})
 
 
 

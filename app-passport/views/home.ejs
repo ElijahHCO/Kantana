@@ -24,6 +24,11 @@
     <% if(userObject.city){ %> 
     <p> <%= userObject.city %> , <%=  userObject.state %>   </p>  
     <% } %> 
+
+
+    <form action="/user/<%= userObject._id %>?_method=DELETE" method="post">
+        <button type="submit">Delete <%= userObject.name %>?</button>
+    </form>
 <form action="/logout" method="POST">
     <button type="submit">LOG OUT</button>
 </form>

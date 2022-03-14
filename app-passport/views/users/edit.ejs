@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
     <form action="/edit/<%=userObject._id%>?_method=PUT" method="POST">
         Name: <input type="text" name="name" <% if(userObject.name){ %>
             value="<%=userObject.name%>" 
@@ -21,7 +24,7 @@
             required>
             <br>
         City: <input type="text" name="city" <% if(userObject.city){ %>
-            value="<%=userObject.name%>" 
+            value="<%=userObject.city%>" 
             <% } %> 
             required>
             <br>
@@ -31,16 +34,22 @@
             required>
             <br>
         Phone Number: <input type="text" name="phoneNumber" <% if(userObject.phoneNumber){ %>
-            value="<%=userObject.name%>" 
+            value="<%=userObject.phoneNumber%>" 
             <% } %> 
             required>
             <br>
         DOB: <input type="date" name="dob" <% if(userObject.dob){ %>
-            value="<%=userObject.name%>" 
+            value="<%= userObject.dob%>" 
             <% } %> 
             required>
             <br>
         <button type="submit">Submit</button>
     </form>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <a href="/home"><button>GO BACK HOME</button></a>
+
 </body>
 </html>
