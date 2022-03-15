@@ -14,13 +14,13 @@ router.get('/', async (req, res)=>{
         const instruments = await Instrument.find();
         res.locals.instruments = instruments;
         res.render('instruments/index.ejs')
-        console.log('------------------------------------------------------------------------------')
     }catch(err){
         req.flash('error','Our system is overloaded please try again,  if the issue persists logout and log back in.');
         res.redirect('/users/home')
     }
 })
 // NEW: GET
+
 // /instruments/new
 // Shows a form to create a new instrument
 router.get('/new', (req, res)=>{
@@ -33,9 +33,7 @@ router.get('/new', (req, res)=>{
 router.get('/:id', async (req, res)=>{
     try{
         const instrument = await Instrument.findById(req.params.id).populate("username", ["username"])
-        console.log('______________________________________________________________')
         console.log(instrument)
-        console.log('______________________________________________________________')
         res.render("instruments/show.ejs", {
             instrument: instrument
         })
@@ -53,7 +51,6 @@ router.post('/', async (req, res)=>{
     try{
         req.body.username = req.session.passport.user
         const newInstrument = await Instrument.create(req.body);
-        console.log(newInstrument)
         req.flash('success',`${req.body.name} successfully created`);
         res.redirect('/instruments')
     }catch(err){
@@ -69,10 +66,6 @@ router.post('/', async (req, res)=>{
 router.get('/:id/edit', async (req, res)=>{
     try{
         const instrument = await Instrument.findById(req.params.id)
-        console.log('______________________________________________________________')
-        console.log(instrument)
-        console.log('______________________________________________________________')
-
         res.render('instruments/edit.ejs', {
             instrument: instrument
         })
@@ -92,6 +85,7 @@ router.put('/:id', async (req, res)=>{
    }catch(err){
         req.flash('error','Failed to update instrument');
         res.redirect(`/${req.params.id}`)
+        console.log(err)
    }
 })
 // DELETE: DELETE
@@ -104,6 +98,7 @@ router.delete('/:id', async (req, res)=>{
     }catch(err){
         req.flash('error','Failed to delete instrument');
         res.redirect('/instruments')
+        console.log(err)
     }
 })
 

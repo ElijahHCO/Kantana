@@ -22,8 +22,9 @@ router.post('/login',
 //make new user
 router.post('/new', userExists , async (req, res)=>{
     const password = hashedPassword(req.body.password)
+    const hobbies = req.body.hobbies.split(',')
     req.body.password = password
-    console.log(password)
+    req.body.hobbies = hobbies
     try{
         const newUser = await User.create(req.body)
         req.logIn(newUser, (err) => {
@@ -33,8 +34,6 @@ router.post('/new', userExists , async (req, res)=>{
               return res.redirect('/users/login');
       })
     }catch(err){ 
-        console.log(err)
-        console.log('breakig is learning')
         res.redirect('/users/register')
     }
 })
@@ -53,15 +52,7 @@ router.get('/register',   backtoProfile, (req, res) => {
 
 router.get('/home', loggedUser ,async (req, res)=> {
   try{
-    console.log('======================================>')
-    console.log('======================================>')
     const instruments = await Instrument.find({username: res.locals.userObject._id})
-    console.log('======================================>')
-    console.log('======================================>')
-    console.log('======================================>')
-    console.log('======================================>')
-    console.log('======================================>')
-    console.log(instruments)
     res.render('home.ejs', {
       instruments: instruments
     })
@@ -74,13 +65,11 @@ router.get('/home', loggedUser ,async (req, res)=> {
 
 router.get('/edit/:id', loggedUser,async (req, res)=>{
   try{
-    console.log('ok')
       const user = await User.findById(req.session.passport.user)
       res.render('users/edit.ejs' , {
         user: user
       })
   }catch(err){
-    console.log('======================================>')
     console.log(err)
       res.redirect('/users/home')
   }
@@ -88,8 +77,9 @@ router.get('/edit/:id', loggedUser,async (req, res)=>{
 
 router.put('/edit/:id', async (req, res)=>{
   try{
+    const hobbies = req.body.hobbies.split(',')
+    req.body.hobbies = hobbies
     const updated = await User.findByIdAndUpdate(req.session.passport.user, req.body)
-    console.log(updated)
     res.redirect(`/users/home`)
   }catch(err){
     console.log(err)
@@ -112,6 +102,7 @@ router.delete('/:id', async (req, res)=>{
       await User.findByIdAndDelete(req.session.passport.user)
       res.redirect('/users/register')
   }catch(err){
+    console.error(err)
     res.redirect('/users/home')
   }
 })
