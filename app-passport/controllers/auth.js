@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport')
 const User = require('../models/user');
+const Instrument = require("../models/instruments")
 const router = express();
 const userExists = require('../middlewear/users/userExists')
 const {hashedPassword} = require('../middlewear/users/passwordHasser');
@@ -13,8 +14,8 @@ router.use(passport.initialize());
 //log in
 router.post('/login',
   passport.authenticate('local', {
-  successRedirect: '/home',
-  failureRedirect: '/login',
+  successRedirect: '/users/home',
+  failureRedirect: '/users/login',
   failureFlash: true
   }))
 
@@ -29,12 +30,12 @@ router.post('/new', userExists , async (req, res)=>{
           if (err) {
               return next(err);
           }
-              return res.redirect('/login');
+              return res.redirect('/users/login');
       })
     }catch(err){ 
         console.log(err)
         console.log('breakig is learning')
-        res.redirect('/register')
+        res.redirect('/users/register')
     }
 })
 
@@ -50,8 +51,25 @@ router.get('/register',   backtoProfile, (req, res) => {
   res.render("users/signup.ejs")
 })
 
-router.get('/home', loggedUser ,(req, res)=> {
-    res.render('home.ejs')
+router.get('/home', loggedUser ,async (req, res)=> {
+  try{
+    console.log('======================================>')
+    console.log('======================================>')
+    const instruments = await Instrument.find({username: res.locals.userObject._id})
+    console.log('======================================>')
+    console.log('======================================>')
+    console.log('======================================>')
+    console.log('======================================>')
+    console.log('======================================>')
+    console.log(instruments)
+    res.render('home.ejs', {
+      instruments: instruments
+    })
+  }catch(err){
+    console.log(err)
+    res.redirect('/instruments/new')
+  }
+   
 })
 
 router.get('/edit/:id', loggedUser,async (req, res)=>{
@@ -64,7 +82,7 @@ router.get('/edit/:id', loggedUser,async (req, res)=>{
   }catch(err){
     console.log('======================================>')
     console.log(err)
-      res.redirect('/home')
+      res.redirect('/users/home')
   }
 })
 
@@ -72,10 +90,10 @@ router.put('/edit/:id', async (req, res)=>{
   try{
     const updated = await User.findByIdAndUpdate(req.session.passport.user, req.body)
     console.log(updated)
-    res.redirect(`/home`)
+    res.redirect(`/users/home`)
   }catch(err){
     console.log(err)
-    res.redirect(`/home`)
+    res.redirect(`/users/home`)
   }
 })
 
@@ -85,16 +103,16 @@ router.put('/edit/:id', async (req, res)=>{
 router.post('/logout', (req, res)=>{
   res.locals.user = null;
   req.logout();
-  req.session.destroy((err) => res.redirect('/login'));
+  req.session.destroy((err) => res.redirect('/users/login'));
   
 })
 
-router.delete('/user/:id', async (req, res)=>{
+router.delete('/:id', async (req, res)=>{
   try{
       await User.findByIdAndDelete(req.session.passport.user)
-      res.redirect('/register')
+      res.redirect('/users/register')
   }catch(err){
-      res.sendStatus(500)
+    res.redirect('/users/home')
   }
 })
 
