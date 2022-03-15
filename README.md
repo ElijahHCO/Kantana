@@ -1,5 +1,5 @@
 # Project-2
-Xander - Front end - Island Time 7AM GitHub: aaronjled
+Xander - Front end - Island Time 6AM GitHub: aaronjled
 Elijah - Back end - Mountain Time 10AM
 Steven - Back end - Eastern time 12pm GitHub: stevencueto
 Aaron - Front end - Pacific Time 9am Github: ahfullstack
