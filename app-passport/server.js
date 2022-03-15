@@ -30,7 +30,7 @@ app.use(express.urlencoded({extended: true}));
 
 //passport stuff
 
-app.use(express.static("public"))
+app.use(express.static(__dirname + '/public'));
 app.use(flash())
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -67,9 +67,6 @@ const appCheker = require('./middlewear/authCheck')
 app.use('/', appCheker)
 app.use('/users', authRouter)
 app.use('/instruments', instrumentsRouter)
-
-
-
 
 app.listen(process.env.PORT || 3000 , ()=>{
     console.log('expres===============>')

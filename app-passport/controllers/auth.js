@@ -22,9 +22,9 @@ router.post('/login',
 //make new user
 router.post('/new', userExists , async (req, res)=>{
     const password = hashedPassword(req.body.password)
-    const hobbies = req.body.hobbies.split(',')
+    //const hobbies = req.body.hobbies.split(',')
     req.body.password = password
-    req.body.hobbies = hobbies
+    //req.body.hobbies = hobbies
     try{
         const newUser = await User.create(req.body)
         req.logIn(newUser, (err) => {
