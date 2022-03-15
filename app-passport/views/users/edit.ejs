@@ -10,7 +10,7 @@
     <% if (messages.error) { %>
         <%= messages.error %>
       <% } %>
-    <form action="/edit/<%=userObject._id%>?_method=PUT" method="POST">
+    <form action="/users/edit/<%=userObject._id%>?_method=PUT" method="POST">
         Name: <input type="text" name="name" <% if(userObject.name){ %>
             value="<%=userObject.name%>" 
             <% } %> 
@@ -18,7 +18,7 @@
             <br>
         Email: <input type="text" name="toppings" value="<%=userObject.email%>" required>
         <br>
-        hobbies: <input type="text" name="tasty" <% if(userObject.hobbies){ %>
+        hobbies: <input type="text" name="hobbies" <% if(userObject.hobbies){ %>
             value="<%=userObject.hobbies%>" 
             <% } %> 
             required>
@@ -49,7 +49,7 @@
     <br>
     <br>
     <hr>
-    <a href="/home"><button>GO BACK HOME</button></a>
+    <a href="/users/home"><button>GO BACK HOME</button></a>
 
 </body>
 </html>

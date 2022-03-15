@@ -5,9 +5,6 @@ module.exports = async (req, res, next) => {
       const user = await User.findById(req.session.passport.user);
       user.password = undefined
       res.locals.userObject = user;
-      console.log(res.locals.userObject)
-      console.log('password')
-      console.log(res.locals.userObject)
       return next()
     }catch(err){
       res.locals.userObject = null;

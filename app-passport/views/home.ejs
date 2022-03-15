@@ -1,42 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <% if (messages.error) { %>
-        <%= messages.error %>
-      <% } %>
-
+    <%= messages.error %>
+    <% } %>
 
 
     <h1><%= userObject.username %></h1>
     <h1><%= userObject.name %></h1>
 
     <br><br><br>
-    <% userObject.hobbies.forEach(Hobby => { %>
-            <%= userObject.hobbies %>
+    <p> Hobbies:
+        <% userObject.hobbies.forEach((hobby, index) => { %>
+         <%= hobby %>
+        <% if (index != userObject.hobbies.length -1){ %>
+        ,
+        <% } %> 
+        <% }); %>
+    </p>
+    <% if(userObject.city){ %>
+    <p> <%= userObject.city %> , <%=  userObject.state %> </p>
+    <% } %>
 
-    <% }); %>
-    <% if(userObject.city){ %> 
-    <p> <%= userObject.city %> , <%=  userObject.state %>   </p>  
-    <% } %> 
 
 
-    <form action="/user/<%= userObject._id %>?_method=DELETE" method="post">
+    <form action="/users/<%= userObject._id %>?_method=DELETE" method="post">
         <button type="submit">Delete <%= userObject.name %>?</button>
     </form>
-<form action="/logout" method="POST">
-    <button type="submit">LOG OUT</button>
-</form>
+    <form action="/logout" method="POST">
+        <button type="submit">LOG OUT</button>
+    </form>
 
-<a href="/edit/<%= userObject._id %> ">
-    <button>
-        Edit Profile
-    </button>
-</a>
+
+
+    <a href="/users/edit/<%= userObject._id %> ">
+        <button>
+            Edit Profile
+        </button>
+
+
+        <% if(instruments){%>
+        <ul>
+            <% instruments.forEach((instrument) =>{  %>
+            <li><a href="/instruments/<%=instrument._id%>"><%=instrument.name%></a></li>
+            <%  }) %>
+        </ul>
+        <% } %>
+
+
+        <a href="/users/home"><button>Go Back Home</button></a>
+
+    </a>
 </body>
+
 </html>

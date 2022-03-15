@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
+<br><br><br><br>
+
+    <h1><%= instrument.name %></h1>
+    <p>Description: <%= instrument.description%></h3>
+    <p>$ <%= instrument.price %></p>
+    <p>User: <%= instrument.username.username %> </p>
+    <br><br><br><br>
+    <% if(instrument.username.username == userObject.username){ %>
+    <a href="/instruments/<%=instrument._id%>/edit"><button>Edit</button></a>
+    <form action="/instruments/<%= instrument._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= instrument.name %>?</button>
+    </form>
+    <% } %> 
+    
+    <br>
+
+    <a href="/instruments"><button>Go to all instruments</button></a>
+    <a href="/users/home"><button>Go Back Home</button></a>
+
+    <br>
+
+</body>
+</html>
