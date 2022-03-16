@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport')
 const User = require('../models/user');
+const Instrument = require("../models/instruments")
 const router = express();
 const userExists = require('../middleware/users/userExists')
 const {hashedPassword} = require('../middleware/users/passwordHasser');
@@ -38,8 +39,16 @@ router.post('/new', userExists , async (req, res)=>{ //to make new user
 })
 
 
-router.get('/', (req, res) =>{
-  res.render('main.ejs')
+router.get('/', async (req, res) =>{
+  try{
+    const homeInstruments = await Instrument.find();
+    res.render('main.ejs', {
+      homeInstruments: homeInstruments
+    })
+  }catch(err){
+    console.log(err)
+    res.status(500).send({ message:err.message})
+  }
 })
 
 

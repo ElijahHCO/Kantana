@@ -8,7 +8,7 @@ const passport = require('passport');
 const User = require('./models/user')
 const MongoDBStore = require('connect-mongodb-session')(session);
 const store = new MongoDBStore({
-    uri: process.env.MONGO_URI,
+    url: process.env.MONGODB_URI,
     collection: 'mySessions'
 });
 require('./middleware/users/localStrategy')
@@ -63,7 +63,17 @@ app.use(requestAndMethod)
 
 
 
+const home = '/home'
 
+for (let i = 0; i < home.length; i++){
+    if(i > 0){
+        const slicedPizza = home.slice(0, i)
+        app.get(slicedPizza, (req, res) => {
+        res.redirect(home)
+      })
+    }
+    
+}
 
 
 //session cheker so we don't have to render the user object everytime they loggin lol
