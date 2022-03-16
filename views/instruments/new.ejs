@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+<%- include('../partials/filepondLinks') %> 
+
+</head>
+<body>
+    <%- include('../partials/messages') %> 
+
+      <h1>Hello</h1>
+<br><br><br><br>
+<main>
+    <h1>Make a New instrument:</h1>
+    <form class="form-contents" action="/instruments" method="POST">
+        <div class="actual-form">
+            <div>
+                <label for="name">Name</label><br>
+                <input type="text" name="name"  required><br>
+                <label for="price">Price</label><br>
+                <input type="number" name="price"><br>
+                <label for="description">Description</label><br>
+                <textarea name="description" id="" cols="19" rows="10"></textarea><br>
+                <label for="location">Location</label><br>
+                <input type="text" name="location" required><br>
+            </div>
+            <div class="fileUpload">
+                <input type="file" class="filepond" name="photo">
+            </div>
+        </div>
+        <br><br>
+        <button class="nasa-btn" type="submit">
+            <div class="moving-button">
+                <i class="fa-solid fa-rocket"></i>
+            </div>
+        </button>
+    </form>
+
+    <a href="/instruments"><button>Go to All Instruments</button></a>
+    <a href="/users/home"><button>Go Back Home</button></a>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/messages') %> 
+
+    <form action="/instruments/<%=instrument._id%>?_method=PUT" method="POST"><br>
+        <div>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" required value="<%= instrument.name%>"><br>
+            <label for="price">Price</label><br>
+            <input type="number" name="price"<%= instrument.price%>"><br>
+            <label for="description">Description</label><br>
+            <textarea name="description" id="" cols="19" rows="10"<%= instrument.description%>" required><br></textarea><br>
+            <label for="location">Location</label><br>
+            <input type="text" name="location" required<%= instrument.location%>"><br><br>
+        </div>
+        <div class="fileUpload">
+            <input type="file" class="filepond" name="photo">
+        </div>
+    </div>
+    <br><br>
+    <button class="nasa-btn" type="submit">
+        <div class="moving-button">
+            <i class="fa-solid fa-rocket"></i>
+        </div>
+    </button>
+    </form>
+
+    <a href="/instruments"><button>Go to all instruments</button></a>
+    <a href="/users/home"><button>Go Back Home</button></a>
+</body>
+</html>
