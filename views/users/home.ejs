@@ -10,15 +10,9 @@
 </head>
 
 <body>
+    <%- include('../partials/nav') %>
     <%- include('../partials/messages') %> 
 
-
-
-    <h1><%= userObject.username %></h1>
-    <h1><%= userObject.name %></h1>
-
-    <br><br><br>
-    <p> Hobbies:
     <section class = "userProfile">
         <% if (messages.error) { %>
         <%= messages.error %>
@@ -38,27 +32,6 @@
     <p> <%= userObject.city %> , <%=  userObject.state %> </p>
     <% } %>
 
-
-
-    <form action="/users/<%= userObject._id %>?_method=DELETE" method="post">
-        <button type="submit">Delete <%= userObject.name %>?</button>
-    </form>
-    <form action="/users/logout" method="POST">
-        <button type="submit">LOG OUT</button>
-    </form>
-
-
-
-    <a href="/users/edit/<%= userObject._id %> ">
-        <button>
-            Edit Profile
-        </button>
-
-
-        </p>
-        <% if(userObject.city){ %>
-        <p> <%= userObject.city %> , <%=  userObject.state %> </p>
-        <% } %>
     </section>
     <section class="instrumentList">
     <h4>Items Currently for sale:</h4>

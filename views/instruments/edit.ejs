@@ -7,9 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <%- include('../partials/filepondLinks') %> 
+
 </head>
 <body>
     <%- include('../partials/messages') %> 
+    <%- include('../partials/nav') %> 
 
     <form action="/instruments/<%=instrument._id%>?_method=PUT" method="POST"><br>
         <div>
@@ -18,12 +21,12 @@
             <label for="price">Price</label><br>
             <input type="number" name="price"<%= instrument.price%>"><br>
             <label for="description">Description</label><br>
-            <textarea name="description" id="" cols="19" rows="10"<%= instrument.description%>" required><br></textarea><br>
+            <textarea name="description" id="" cols="19" rows="10"<%= instrument.description%>" required></textarea><br>
             <label for="location">Location</label><br>
             <input type="text" name="location" required<%= instrument.location%>"><br><br>
         </div>
         <div class="fileUpload">
-            <input type="file" class="filepond" name="photo">
+            <input type="file" class="filepond" name="photo" value="<%= instrument.imagePath %>">
         </div>
     </div>
     <br><br>
