@@ -12,7 +12,7 @@ router.use(passport.initialize());
 router.post('/login', //this function send the log in request to the passport middlewear
   passport.authenticate('local', { //"local" means with your credentials
   successRedirect: '/users/home',//if login "ok" sends you to users
-  failureRedirect: '/users/login', //if you redirect send you back to login
+  failureRedirect: '/home/login', //if you redirect send you back to login
   failureFlash: true //sends the failure message using flash
   }))
 
@@ -29,11 +29,11 @@ router.post('/new', userExists , async (req, res)=>{ //to make new user
             console.log(err)
               return next(err);
           }
-              return res.redirect('/users/login'); //else login
+              return res.redirect('/home/login'); //else login
       })
     }catch(err){ 
         console.log(err)
-        res.redirect('/users/register')  //if error send back to register
+        res.redirect('/home/register')  //if error send back to register
     }
 })
 
