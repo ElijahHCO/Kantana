@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/home.css"
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+</head>
+
+<body>
+    <%- include('../partials/messages') %> 
+
+
+
+    <h1><%= userObject.username %></h1>
+    <h1><%= userObject.name %></h1>
+
+    <br><br><br>
+    <p> Hobbies:
+    <section class = "userProfile">
+        <% if (messages.error) { %>
+        <%= messages.error %>
+        <% } %>
+        <img id = "profilePicture" src="/imgs/aaron.png">
+        <h1 id = "usernameDisplay"><%= userObject.name %></h1>
+        <h1><%= userObject.username %></h1>
+        <p> Hobbies:
+        <% userObject.hobbies.forEach((hobby, index) => { %>
+         <%= hobby %>
+        <% if (index != userObject.hobbies.length -1){ %>
+        ,
+        <% } %> 
+        <% }); %>
+    </p>
+    <% if(userObject.city){ %>
+    <p> <%= userObject.city %> , <%=  userObject.state %> </p>
+    <% } %>
+
+
+
+    <form action="/users/<%= userObject._id %>?_method=DELETE" method="post">
+        <button type="submit">Delete <%= userObject.name %>?</button>
+    </form>
+    <form action="/users/logout" method="POST">
+        <button type="submit">LOG OUT</button>
+    </form>
+
+
+
+    <a href="/users/edit/<%= userObject._id %> ">
+        <button>
+            Edit Profile
+        </button>
+
+
+        </p>
+        <% if(userObject.city){ %>
+        <p> <%= userObject.city %> , <%=  userObject.state %> </p>
+        <% } %>
+    </section>
+    <section class="instrumentList">
+    <h4>Items Currently for sale:</h4>
+        <% if(instruments){%>
+            <ul class = "itemsForSale">
+                <% instruments.forEach((instrument) =>{  %>
+                <li class= "instruments"><a href="/instruments/<%=instrument._id%>"><%=instrument.name%></a></li>
+                <%  }) %>
+            </ul>
+        <% } %>
+
+
+
+    </a>
+    </section>
+    <section class="profileButtons">
+        <form action="/users/<%= userObject._id %>?_method=DELETE" method="post">
+            <button id ="delete" type="submit">Delete <%= userObject.name %>?</button>
+        </form>
+        <form action="/logout" method="POST">
+            <button id ="logout" type="submit">LOG OUT</button>
+        </form>
+        <a href="/users/edit/<%= userObject._id %> ">
+            <button id="editProfile">
+                Edit Profile
+            </button>
+            <a href="/users/home"><button id ="home">Go Back Home</button></a>
+        </a>
+    </section>
+</body>
+
+</html>

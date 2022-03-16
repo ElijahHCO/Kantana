@@ -1,0 +1,61 @@
+   
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    padding: 0;
+    min-width: 375px;
+    max-width: 1600px;
+}
+.form-contents{
+    width: 375px;
+    margin-right: min(auto, 5px);
+
+}
+
+.nasa-btn{
+    border: none;
+    background-color: #666;
+    color: white;
+    border-radius: 10px;
+    width: 350px;
+    font-size: 1.3rem;
+}
+.nasa-btn:hover{
+    background-color: #333;
+    transition: .5s ease-in-out;
+}
+
+.moving-button{
+    padding: 10px 0;
+    transition: .5s ease-in-out;
+}
+.moving-button:hover{
+    transform: translate3d(0px, -7px, 0px);
+}
+  
+
+.fileUpload{
+    width: 350px;
+    height: 600px;
+    margin-top: 1rem;
+    margin-right: 8rem;
+
+}
+
+input[type="text"], input[type="number"] , textarea {
+    display: -webkit-inline-flex;
+    width: 350px;
+    padding: 5px 15px;
+    font-size: 1.1rem;
+}
+input:focus, textarea:focus{
+    outline: none;
+}
