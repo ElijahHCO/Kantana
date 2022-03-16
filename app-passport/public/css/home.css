@@ -1,0 +1,62 @@
+* {
+    background: #3a475e;
+    color: #f2f0f3;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#profilePicture {
+    max-height: 300px;
+    max-width: 300px;
+    border-radius: 40%;
+    border: 5px solid #f2f0f3;
+    object-fit: contain;
+}
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+#usernameDisplay {
+    font-size: 36px;
+}
+.instrumentList {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    text-decoration: underline;
+    
+}
+.itemsForSale {
+    display: flex;
+    font-size: 36px;
+    font-weight: bold;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 0;
+}
+.instruments {
+    padding: 5px;
+}
+.profileButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+#logout {
+    border-radius: 12px;
+    background-color: #7d83bf;
+}
+#delete {
+    border-radius: 12px;
+    background-color: #7d83bf;
+}
+#editProfile {
+    border-radius: 12px;
+    background-color: #7d83bf;
+}
+#home {
+    border-radius: 12px;
+    background-color: #7d83bf;
+}
