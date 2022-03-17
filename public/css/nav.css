@@ -6,18 +6,17 @@ a {
     min-height: 55px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: right;
+    align-items: right;
     padding: 0 24px;
 }
 #nav-ul {
     position: fixed;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 200px;
+    gap: 20px;
     z-index: 2;
-    background-color: #7d83bf;
+    font-weight: bold
 }
 .hamburger{
     position: fixed;
@@ -78,14 +77,11 @@ a {
     
 }
 a:link, a:visited {
-    background-color: #7d83bf;
+    background-color: transparent;
     color: #f2f0f3;
     text-decoration: none;
    
 }
 a:hover, a:active {
     color: #6fccd8 ;
-}
-header {
-      background-color: #7d83bf;
 }

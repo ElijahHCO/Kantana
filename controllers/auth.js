@@ -40,7 +40,7 @@ router.post('/new', userExists , async (req, res)=>{ //to make new user
 router.get('/', async (req, res) =>{
   try{
     const homeInstruments = await Instrument.find();
-    res.render('main.ejs', {
+    res.render('template.ejs', {
       homeInstruments: homeInstruments
     })
   }catch(err){
