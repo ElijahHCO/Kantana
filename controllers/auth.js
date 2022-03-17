@@ -6,8 +6,6 @@ const router = express();
 const userExists = require('../middleware/users/userExists')
 const {hashedPassword} = require('../middleware/users/passwordHasser');
 const backToProfile = require('../middleware/users/backToProfile')
-router.use(passport.session());
-router.use(passport.initialize());
 
 //log in
 router.post('/login', //this function send the log in request to the passport middlewear
