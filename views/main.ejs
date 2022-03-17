@@ -20,22 +20,20 @@
         <div class="shadow"></div>
         <div class="shadow-two"></div>
       </div>
-    <section id = slideShow>
-        <% for (let i = 0; i < homeInstruments.length; i++) { %>
-            <div class = carousel>
+    <section id = "slideShow">
+            <div class = "carousel">
                 <button id = "prev">&#8610;</button>
                 <button id = "next">&#8611;</button>
                     <div class = "slide slide--visible">
-                        <img src="<%=homeInstruments[i].imagePath %>" alt="img1">
+                        <img src="/imgs/aaron.png" alt="img1">
                     </div>
-                    <div class = slide>
-                        <img src="<%=homeInstruments[i].imagePath %>" alt="img2">
+                    <div class = "slide">
+                        <img src="/imgs/guitar.jpeg" alt="img2">
                     </div>
-                    <div class = slide>
-                        <img src="<%=homeInstruments[i].imagePath %>" alt="img3">
+                    <div class = "slide">
+                        <img src="/imgs/aaron.png" alt="img3">
                     </div>
             </div>
-        <% } %>
     </section>
     <section class = "mainAbout">
       <h1>About Kantata</h1>
