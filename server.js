@@ -14,9 +14,6 @@ const store = new MongoDBStore({
 
 require('./middleware/users/localStrategy')
 const flash =  require('express-flash')
-const instrumentsRouter = require('./controllers/instrumentsController');
-const authRouter = require('./controllers/auth');
-const userRouter = require('./controllers/userController')
 
 //passport stuff
 
@@ -53,7 +50,9 @@ const logged = require('./middleware/users/loggedUser');
 
 app.use(requestAndMethod)
 
-
+const instrumentsRouter = require('./controllers/instrumentsController');
+const authRouter = require('./controllers/auth');
+const userRouter = require('./controllers/userController')
 
 //session cheker so we don't have to render the user object everytime they loggin lol
 const appCheker = require('./middleware/authCheck');
