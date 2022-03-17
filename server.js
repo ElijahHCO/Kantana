@@ -17,7 +17,7 @@ const instrumentsRouter = require('./controllers/instrumentsController');
 const authRouter = require('./controllers/auth');
 const userRouter = require('./controllers/userController')
 
-console.log(process.env.MONGODB_URI)
+
 
 require('./mongodbs/app')
 
