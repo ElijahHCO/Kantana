@@ -82,6 +82,7 @@ app.use('/', appCheker)
 app.use('/home', authRouter)
 app.use('/users', userRouter, logged)
 app.use('/instruments', instrumentsRouter)
-app.listen(process.env.PORT || 3000 , ()=>{
+const Port = process.env.PORT || 3000
+app.listen(Port , ()=>{
     console.log('expres===============>')
 })
