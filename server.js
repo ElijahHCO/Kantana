@@ -50,6 +50,18 @@ const logged = require('./middleware/users/loggedUser');
 
 app.use(requestAndMethod)
 
+const home = '/home'
+
+for (let i = 0; i < home.length; i++){
+    if(i > 0){
+        const slicedPizza = home.slice(0, i)
+        app.get(slicedPizza, (req, res) => {
+        res.redirect(home)
+      })
+    }
+    
+}
+
 const instrumentsRouter = require('./controllers/instrumentsController');
 const authRouter = require('./controllers/auth');
 const userRouter = require('./controllers/userController')
@@ -57,7 +69,7 @@ const userRouter = require('./controllers/userController')
 //session cheker so we don't have to render the user object everytime they loggin lol
 const appCheker = require('./middleware/authCheck');
 app.use('/', appCheker)
-app.use('/', authRouter)
+app.use('/home', authRouter)
 app.use('/users', userRouter, logged)
 app.use('/instruments', instrumentsRouter)
 const Port = process.env.PORT || 3000
