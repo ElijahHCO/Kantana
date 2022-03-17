@@ -55,8 +55,6 @@ const logged = require('./middleware/users/loggedUser');
 //to verify passport is more secure than my middlewear and 
 
 
-
-
 app.use(requestAndMethod)
 
 
