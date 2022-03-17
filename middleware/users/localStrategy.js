@@ -4,7 +4,7 @@ const passport = require('passport');
 const Strategy  = require('passport-local'); //strategy is the way you log in it can be local which means your using credentials or can be something like google
 const User = require('../../models/user'); // needs the user schema
 const { comparePassword } = require('./passwordHasser'); //needs to compare the passwords so we're getting the middlewear
-const session = require('express-session') 
+ 
 
 
 passport.serializeUser((user, done) => {            //serializing the user is to save the id to the passport
