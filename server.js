@@ -17,8 +17,6 @@ const instrumentsRouter = require('./controllers/instrumentsController');
 const authRouter = require('./controllers/auth');
 const userRouter = require('./controllers/userController')
 
-
-
 require('./mongodbs/app')
 
 // use morgan
