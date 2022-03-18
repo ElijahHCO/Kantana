@@ -11,14 +11,15 @@
 .wrapper{
     width: 100vw;
     height: 100vh;
+    min-height: 800px;
     background-image: url("/imgs/kantatabg2.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 
@@ -87,7 +88,3 @@ form{
 }
 
 
-.error-message{
-    color: white;
-    margin: 2em auto;
-}

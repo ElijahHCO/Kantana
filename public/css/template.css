@@ -67,7 +67,7 @@ body {
 
 .hero-section {
     margin-top: 10rem;
-    overflow: hidden;
+    padding-bottom: 10em;
 }
 
 .subtitle {

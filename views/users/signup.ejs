@@ -9,9 +9,11 @@
    
 </head>
 <body>
-    <%- include('../partials/messages') %> 
     <main class="wrapper">
+
         <section class="box">
+            <%- include('../partials/messages') %> 
+
            <a href="/home"><img src="/imgs/Kantatalogo.png" alt=""></a>
             <form action="/home/new" method="POST">
                 <input type="text" name="username" required min="5" max="25" placeholder="Username" class="input-field">
