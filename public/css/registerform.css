@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    font-family: Roboto;
+}
+
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/imgs/kantatabg2.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+input{
+    padding: 2px;
+    text-align: center;
+    background-color: #F2F0F380;
+    border: none;
+    font-size: 1rem;
+}
+.input-field{
+    padding: .8em 7em;
+    border-radius: .8em;
+}
+
+input:focus{
+    outline: none;
+}
+
+::placeholder {
+    color: white;
+  }
+
+.box {
+    justify-content: center;
+    background-color: #23252673;
+    border: none;
+    border-radius: 1em;
+    padding: 30px 100px 30px 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#signup {
+    width: 160px;
+    background-color: rgba(125, 130, 191, 0.699);
+    font-weight: Medium;
+    font-size: 1.65em;
+    text-align: center;
+    padding: 10px;
+    border-radius: 1em;
+    border: none;
+    cursor: pointer;
+    color: rgba(242,240,243,1);
+    margin-top: 1.5em;
+}
+
+img {
+    width: 206px;
+    margin-bottom: 1em;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 600px;
+}
+
+.login-from {
+    height: 200px;
+}
+
+.login-from button{
+    margin-top: 5em;
+}
+
+
+.error-message{
+    color: white;
+    margin: 2em auto;
+}

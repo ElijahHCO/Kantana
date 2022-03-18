@@ -51,7 +51,7 @@
         <form action="/users/<%= userObject._id %>?_method=DELETE" method="post">
             <button id ="delete" type="submit">Delete <%= userObject.name %>?</button>
         </form>
-        <form action="/logout" method="POST">
+        <form action="/users/logout" method="POST">
             <button id ="logout" type="submit">LOG OUT</button>
         </form>
         <a href="/users/edit/<%= userObject._id %> ">

@@ -21,9 +21,6 @@ const userSchema = new Schema({
     email:{type: String,
         required: true,
         unique: true,},
-    dob: {type: Date,
-        required: true
-    },
     city: {
         type: String,
         required: true,

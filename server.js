@@ -31,7 +31,7 @@ app.use(passport.initialize());
 app.use(morgan('dev'))
 
 // use public folder for static assets
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'))
 
 app.use(methodOverride('_method'))
 //using in out app

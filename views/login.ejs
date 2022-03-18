@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <%- include('./partials/messages') %> 
-    <%- include('./partials/nav') %> 
+    <link rel="stylesheet" href="/css/registerform.css">
 
-    <form action="/home/login" method="POST">
-        <label for="email">Email:</label>
-        <input type="text" name="email" required>
-        <br><br><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password">
-        <br><br><br>
-        <button type="submit">Login</button>
-    </form>
-   <a href="/home/register">
-       <button>
-           SignUp
-       </button>
-   </a>
+</head>
+
+<body>
+    <main class="wrapper">
+
+
+            <section class="box">
+                <a href="/home"><img src="/imgs/Kantatalogo.png" alt=""></a>
+                <%- include('./partials/messages') %>
+
+                <form action="/home/login" method="POST" class="login-from">
+                    <input type="text" name="email" placeholder="Email" class="input-field">
+                    <input type="password" name="password" placeholder="Password" class="input-field">
+                    <button type="submit" id="signup">Login</button>
+                </form>
+            </section>
+
+
+    </main>
+
 </body>
+
 </html>
