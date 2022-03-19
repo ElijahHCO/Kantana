@@ -1,41 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <link rel="stylesheet" href="/css/nav.css"
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
+    <link rel="stylesheet" href="/css/nav.css">
 </head>
-<body>
-    <nav id ="top-nav">
-        <ul id = "nav-ul">
-            <li class = "nav-links">
-                <a href ="/home">Home</a>
-            </li>
-            <li class = "nav-links">
-                <a href= "#jump-about">About</a>
-            </li>
-            <li class = "nav-links">
-                <a href="">Music</a>
-            </li>
-            <li class = "nav-links">
-                <a href="/instruments">For Sale</a>
-            </li>
-            <li class = "nav-links">
-                <a href="#jump-meet_up">Meet Up</a>
-            </li>
-            <li class = "nav-links">
-                <a href="/users/home">Profile</a>
-            </li>
+<header class="header-main">
+    <img class="logo-img" src="/imgs/Kantatalogo.png" alt="">
+    <nav class="nav-bar">
+        <ul>
+            <li class="nav-item"><a href="/home">Home</a></li>
+            <li class="nav-item"><a href="/instruments">Instruments</a></li>
+            <div class="dropdown">
+                <span class="nav-item">Profile</span>
+                <div class="dropdown-content">
+                    <ul id="profileButtons">
+                        <li>
+                            <form action="/users/<%= userObject._id %>?_method=DELETE" method="post">
+                                <button class="form-link" type="submit">Delete Profile</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/users/logout" method="POST">
+                                <button class="form-link" id="logout" type="submit">Log Out</button>
+                            </form>
+                        </li>
+                        <li>
+                           <a  class="nav-other-link" href="/users/edit/<%=userObject._id%>">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a class="nav-other-link" href="/users/home">Go Back Home</a>
+                        </li>
+                        </section>
+                </div>
+            </div>
+            <% if (userObject.length){ %>
+                <li class="nav-item box-nav"><a href="/home/register">Sign Up</a></li>
+                <% } %>
         </ul>
-        <div class = "hamburger">
-            <span class = "bar"></span>
-            <span class = "bar"></span>
-            <span class = "bar"></span>
-        </div>
+
     </nav>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/js/nav.js"></script>
-</body>
-</html>
+</header>
+</nav>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/js/nav.js"></script>

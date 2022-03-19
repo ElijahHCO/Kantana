@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/home.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <%- include('../partials/messages') %> 
+    <main class="wrapper">
+        <%- include('../partials/messages') %>
+            <%- include('../partials/nav') %>
+                <section class="box">
+                    <a href="/instruments/new">Create A New Listing</a>
+                    <% if(instruments.length===0) {%>
+                        <h2>There are no instruments yet!</h2>
+                        <a href="/instruments/new">Create one now!</a>
+                        <% } else { %>
+                            <ul class="instruments">
+                                <% instruments.forEach((instrument)=>{ %>
+                                    <a href="/instruments/<%=instrument._id%>">
+                                    <li>
+                                        <div class = "card">
+                                            <div class="card_inner">
+                                                <div class="card_face card_face--front">
+                                                    <img src="<%= instrument.imagePath %>" alt="" class="head">
+                                                    <h1><%= instrument.name %></h1>
+                                                    <h3><%= instrument.username.username %> </h3>
+                                                    <p>$ <%= instrument.price %></p>
+                                                </div>
+                                            </div>
+                                        </div>        
+                                    </li>
+                                </a>
+                                    <% }) %>
 
+                            </ul>
+                            <% } %>
+                            <a href="/instruments/new">Create A New Listing</a>
+                </section>
 
-    <% if(instruments.length === 0) {%>
-        <h2>There are no instruments yet!</h2>
-        <a href="/instruments/new">Create one now!</a>
-    <% } else { %> 
-    <ul class="instruments">
-        <% instruments.forEach((instrument)=>{ %>
-          
-                <li><a href="/instruments/<%=instrument._id%>"><%= instrument.name %><%= instrument.username.username %></a> is only $<%=instrument.price%>, in <%=instrument.location%> </li>
-            <% }) %>
-     
-    </ul>
-    <% } %>
-
-
-    <a href="/users/home"><button>Go Back Home</button></a>
-
-    <a href="/instruments/new"><button>add new instrument</button></a>
+    </main>
 </body>
+
 </html>

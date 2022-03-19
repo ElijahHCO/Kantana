@@ -22,6 +22,10 @@
 
 }
 
+.wrapper.nav{
+    display: block;
+}
+
 
 input{
     padding: 2px;

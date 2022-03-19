@@ -52,10 +52,17 @@ body{
 
 input[type="text"], input[type="number"] , textarea {
     display: -webkit-inline-flex;
+    background-color: #F2F0F380;
     width: 350px;
     padding: 5px 15px;
     font-size: 1.1rem;
+    border: 1px white solid;
 }
 input:focus, textarea:focus{
     outline: none;
+}
+.filepond--panel.filepond--panel-root{
+    background-color: #F2F0F380;;
+    border: 1px solid #F2F0F380;;
+    font-size: inherit;
 }

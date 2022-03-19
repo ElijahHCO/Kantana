@@ -2,35 +2,46 @@ a {
     color: #f2f0f3;
     text-decoration: none;
 }
-#top-nav {
-    min-height: 55px;
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: right;
-    padding: 0 24px;
-}
-#nav-ul {
-    position: fixed;
+.header-main{
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    z-index: 2;
-    font-weight: bold
+    padding-top: 4em ;
 }
-.hamburger{
-    position: fixed;
-    display: none;
-    cursor: pointer;
-    z-index: 2;
+.nav-bar ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    width: 30em;
 }
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    transition: all .3s ease-in-out;
-    background-color: #f2f0f3;  
+
+.nav-item {
+    color: rgba(255,255,255,1);
+    font-size: 1.5em;
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: -1rem;
+}
+
+.nav-bar a{
+    text-decoration: none;
+    font-weight: 300;
+}
+span {
+    text-decoration: none;
+    font-weight: 300; 
+}
+
+.box-nav{
+    margin-top: -5px;
+    border: .115em solid rgb(242,240,243,1);
+    padding: .15em;
+    border-radius: 2em;
+}
+
+.logo-img {
+    width: 13.5em;
+    height: 42px;
+    margin-top: -1rem;
 }
 @media(max-width:768px) {
     .hamburger{
@@ -60,13 +71,13 @@ a {
         top: 15px;
         width: 90%;
         flex-direction: row;
-        background-color: #7d83bf;
+        background-color: transparent;
         text-align: center;
         transition: .3s;
         gap: 0;
     }
     .nav-links {
-        margin: 16xp 0;
+        margin: 16px 0;
     }
     #nav-ul.active{
         left: 0;
@@ -82,6 +93,44 @@ a:link, a:visited {
     text-decoration: none;
    
 }
-a:hover, a:active {
-    color: #6fccd8 ;
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 160px;
+    padding: .1em 1em;
+    z-index: 1;
+    margin-left: -3.5em;
+  }
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+#profileButtons{
+      flex-direction: column;
+      width: 120px;
+}
+
+.form-link{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 5px 0;
+}
+
+.form-link{
+    cursor: pointer;
+}
+
+.nav-other-link{
+    font-size: 16px;
+    text-align: center;
+    font-weight: 400;
 }

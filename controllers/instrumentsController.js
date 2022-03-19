@@ -12,7 +12,7 @@ const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 // Gives a page displaying all the Instruments
 router.get('/', async (req, res)=>{
     try{
-        const instruments = await Instrument.find();
+        const instruments = await Instrument.find().populate("username", ["username"]);
         res.locals.instruments = instruments;
         res.render('instruments/index.ejs')
     }catch(err){

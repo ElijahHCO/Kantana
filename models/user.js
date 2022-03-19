@@ -37,10 +37,6 @@ const userSchema = new Schema({
     hobbies: [ {
         type: String
     }],
-    phoneNumber: {
-    type: String,
-    min: 1
-    },
 }, {timestamps: true})
 
 const User = mongoose.model('User', userSchema);

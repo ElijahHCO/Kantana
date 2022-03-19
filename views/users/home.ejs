@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/css/home.css"
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/home.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,57 +11,57 @@
 </head>
 
 <body>
-    <%- include('../partials/nav') %>
-    <%- include('../partials/messages') %> 
 
-    <section class = "userProfile">
-        <% if (messages.error) { %>
-        <%= messages.error %>
-        <% } %>
-        <img id = "profilePicture" src="/imgs/aaron.png">
-        <h1 id = "usernameDisplay"><%= userObject.name %></h1>
-        <h1><%= userObject.username %></h1>
-        <p> Hobbies:
-        <% userObject.hobbies.forEach((hobby, index) => { %>
-         <%= hobby %>
-        <% if (index != userObject.hobbies.length -1){ %>
-        ,
-        <% } %> 
-        <% }); %>
-    </p>
-    <% if(userObject.city){ %>
-    <p> <%= userObject.city %> , <%=  userObject.state %> </p>
-    <% } %>
+    <main class="wrapper">
+        <%- include('../partials/nav') %>
+            <%- include('../partials/messages') %>
 
-    </section>
-    <section class="instrumentList">
-    <h4>Items Currently for sale:</h4>
-        <% if(instruments){%>
-            <ul class = "itemsForSale">
-                <% instruments.forEach((instrument) =>{  %>
-                <li class= "instruments"><a href="/instruments/<%=instrument._id%>"><%=instrument.name%></a></li>
-                <%  }) %>
-            </ul>
-        <% } %>
+                <div class="box">
+                    <section class="userProfile">
+                        <% if (messages.error) { %>
+                            <%= messages.error %>
+                                <% } %>
+                                    <h1 id="usernameDisplay">
+                                        <%= userObject.name %>
+                                    </h1>
+                                    <h1>
+                                        <%= userObject.username %>
+                                    </h1>
+                                    <p> Hobbies:
+                                        <% userObject.hobbies.forEach((hobby, index)=> { %>
+                                            <%= hobby %>
+                                                <% if (index !=userObject.hobbies.length -1){ %>
+                                                    ,
+                                                    <% } %>
+                                                        <% }); %>
+                                    </p>
+                                    <% if(userObject.city){ %>
+                                        <p>
+                                            <%= userObject.city %> , <%= userObject.state %>
+                                        </p>
+                                        <% } %>
+
+                    </section>
+                    <section class="instrumentList">
+                        <h4>Items Currently for sale:</h4>
+                        <% if(instruments){%>
+                            <ul class="itemsForSale">
+                                <% instruments.forEach((instrument)=>{ %>
+                                    <li class="instruments"><a href="/instruments/<%=instrument._id%>">
+                                            <%=instrument.name%>
+                                        </a></li>
+                                    <% }) %>
+                            </ul>
+                            <% } %>
 
 
 
-    </a>
-    </section>
-    <section class="profileButtons">
-        <form action="/users/<%= userObject._id %>?_method=DELETE" method="post">
-            <button id ="delete" type="submit">Delete <%= userObject.name %>?</button>
-        </form>
-        <form action="/users/logout" method="POST">
-            <button id ="logout" type="submit">LOG OUT</button>
-        </form>
-        <a href="/users/edit/<%= userObject._id %> ">
-            <button id="editProfile">
-                Edit Profile
-            </button>
-            <a href="/users/home"><button id ="home">Go Back Home</button></a>
-        </a>
-    </section>
+                                </a>
+                    </section>
+
+                </div>
+
+    </main>
 </body>
 
 </html>

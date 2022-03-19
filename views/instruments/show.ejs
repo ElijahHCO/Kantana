@@ -1,68 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="/css/instrumentsShow.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Instruments</title>
 </head>
+
 <body>
-    <%- include('../partials/nav') %>
-    <%- include('../partials/messages') %> 
+    <main class="wrapper">
+        <%- include('../partials/nav') %>
+            <%- include('../partials/messages') %>
+            <li>
+                <div class = "card">
+                    <div class="card_inner">
+                        <div class="card_face card_face--front">
+                            <img src="<%= instrument.imagePath %>" alt="" class="head">
+                            <h1><%= instrument.name %></h1>
+                            <h3>User: <%= instrument.username.username %> </h3>
+                            <p>$ <%= instrument.price %></p>
+                        </div>
+            </li>
+                <br><br><br><br>
+                    <% if(instrument.username.username == userObject.username){ %>
+                    <a href="/instruments/<%=instrument._id%>/edit"><button>Edit</button></a>
+                    <form action="/instruments/<%= instrument._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete <%= instrument.name %>?</button>
+                    </form>
+                    <% } %>
+                        <a href="/instruments">Go to all instruments</a>
 
-<br><br><br><br>
-<section id = slideShow>
-    <div class = carousel>
-        <button id = "prev">&#8610;</button>
-        <button id = "next">&#8611;</button>
-            <div class = "slide slide--visible">
-                <img src="<%= instrument.imagePath %>" alt="beach">
-            </div>
-            <div class = slide>
-                <img src="<%= instrument.imagePath %>" alt="rocks">
-            </div>
-            <div class = slide>
-                <img src="<%= instrument.imagePath %>" alt="sunset">
-            </div>
-    </div>
-</section>
-<div class = "card">
-    <div class="card_inner">
-        <div class="card_face card_face--front">
-            <img src="<%= instrument.imagePath %>" alt="" class="head">
-            <h1><%= instrument.name %></h1>
-            <h3>User: <%= instrument.username.username %> </h3>
-            <p>$ <%= instrument.price %></p>
-        </div>
-        <div class="card_face card_face--back">
-            <div class="card_content">
-                <div class="card_header">
-                    <h1><%= instrument.name %></h1>
-                </div>
-                <div class="card_body">
-                    <img src="<%= instrument.imagePath %>" alt="" class="head">
-                    <h3><%= instrument.name %></h3>
-                    <p>Description: <%= instrument.description%></p>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div> 
-<% if(instrument.username.username == userObject.username){ %>
-    <a href="/instruments/<%=instrument._id%>/edit"><button>Edit</button></a>
-    <form action="/instruments/<%= instrument._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete <%= instrument.name %>?</button>
-    </form>
-    <% } %> 
-    <a href="/instruments"><button>Go to all instruments</button></a>
-    <a href="/users/home"><button>Go Back Home</button></a>
-
-    <br>
+                        <br>
+    </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/js/instrumentsCss.js"></script>
-
-
 </body>
+
 </html>

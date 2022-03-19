@@ -24,7 +24,7 @@ router.get('/home', async (req, res)=> { //this one is to show the home page
   //to make edits to your profile
   router.get('/edit/:id', async (req, res)=>{ //if the user is logged in 
     try{
-        const user = await User.findById(req.session.passport.user)//we always check it with the passport session
+        const user = await User.findById(res.locals.userObject._id)//we always check it with the passport session
         res.render('users/edit.ejs' , {
           user: user
         })
@@ -52,14 +52,16 @@ router.get('/home', async (req, res)=> { //this one is to show the home page
   router.post('/logout', (req, res)=>{
     res.locals.user = null; //deletes all local information
     req.logout(); //deletes the sessiosn
-    req.session.destroy((err) => res.redirect('/users/login'));
+    req.session.destroy((err) => res.redirect('/home/login'));
   
   })
   
   router.delete('/:id', async (req, res)=>{
     try{
+        await Instrument.deleteMany({username: req.session.passport.user })
         await User.findByIdAndDelete(req.session.passport.user) //to delete user by their passport id
-        res.redirect('/users/register')
+        req.logout();
+        res.redirect('/home/register')
     }catch(err){
       console.error(err)
       console.log(err)

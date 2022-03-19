@@ -70,8 +70,8 @@ const userRouter = require('./controllers/userController')
 const appCheker = require('./middleware/authCheck');
 app.use('/', appCheker)
 app.use('/home', authRouter)
-app.use('/users', userRouter, logged)
-app.use('/instruments', instrumentsRouter)
+app.use('/users', userRouter)
+app.use('/instruments',logged, instrumentsRouter)
 const Port = process.env.PORT || 3000
 app.listen(Port , ()=>{
     console.log('expres===============>')

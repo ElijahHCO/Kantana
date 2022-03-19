@@ -15,7 +15,14 @@
                         <li class="nav-item"><a href="#">About</a></li>
                         <li class="nav-item"><a href="#">Product</a></li>
                         <li class="nav-item"><a href="#">Pricing</a></li>
-                        <li class="nav-item box-nav"><a href="/home/register">Sign Up</a></li>
+                        <li class="nav-item box-nav"><a href="/home/register">
+                            <% if (!userObject){ %>
+                            Sign Up
+                            <% }else{ %>
+                                Profile
+                                <% } %> 
+                        </a></li>
+
                     </ul>
 
                 </nav>
@@ -29,8 +36,11 @@
                     <h1 class="hero-heading">Selling has <br> never been <br> easier</h1>
                     <p class="hero-text">Discover the easiest and smartest way to buy and sell your musical instruments. Sell,
                         collaborate, invest, withdraw, send, and receive money all over world with no limit.</p>
-                    <a href="/home/login"><button class="btn">Login</button></a>
-                    <a href="/home/register" class="register-link">Sign Up</a>
+                    
+                    <% if (!userObject){ %>
+                        <a href="/home/login"><button class="btn">Login</button></a>
+                        <a href="/home/register" class="register-link">Sign Up</a>
+                   <% } %>
                 </section>
             </div>
 
