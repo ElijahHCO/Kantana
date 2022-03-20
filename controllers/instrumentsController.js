@@ -1,7 +1,7 @@
 const Instrument = require("../models/instruments")
 const express = require('express');
 const router = express.Router();
-const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif'] //for filepond uploading images which type we are going to take from the server
 
 
 
@@ -12,9 +12,10 @@ const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 // Gives a page displaying all the Instruments
 router.get('/', async (req, res)=>{
     try{
-        const instruments = await Instrument.find().populate("username", ["username"]);
-        res.locals.instruments = instruments;
-        res.render('instruments/index.ejs')
+        const instruments = await Instrument.find().populate("username", ["username"]); // .populate is to add the username to the instruments 
+        res.render('instruments/index.ejs', {
+            instruments: instruments //sending all the instruments to display them on the page
+        })
     }catch(err){
         req.flash('error','Our system is overloaded please try again,  if the issue persists logout and log back in.');
         res.redirect('/users/home')
@@ -48,21 +49,18 @@ router.get('/:id', async (req, res)=>{
 // /instruments
 // Creates an actual instrument, then...?
 router.post('/', async (req, res)=>{
-    
-    const instrument = new Instrument({
+    const instrument = new Instrument({  //we have to first make the instrument because we want to save the file into filpond cloud and then get the image path.
         name: req.body.name,
         description: req.body.description,
         location : req.body.location,
         price: req.body.price,
         username: req.session.passport.user
     })
-    console.log(instrument)
-    photoSaver(instrument, req.body.photo)
+    photoSaver(instrument, req.body.photo) //sending the file from the form to the filepond function to store it and get the image path
     try{
         const newInstrument = await instrument.save()
-        console.log(newInstrument)
         req.flash('success',`${req.body.name} successfully created`);
-        res.redirect(`instruments/${newInstrument.id}`)
+        res.redirect(`/instruments/${newInstrument.id}`)
     }catch(err){
         console.log(err)
         req.flash('error','Failed to create instruments');
@@ -81,7 +79,7 @@ router.get('/:id/edit', async (req, res)=>{
             instrument: instrument
         })
     }catch(err){
-        req.flash('error','Failed to create instruments');
+        req.flash('error','Failed to go to that page');
         res.redirect(`/instruments/${req.params.id}`)
     }
 })
@@ -108,9 +106,9 @@ router.delete('/:id', async (req, res)=>{
         await Instrument.findByIdAndDelete(req.params.id)
         res.redirect('/instruments')
     }catch(err){
-        req.flash('error','Failed to delete instrument');
-        res.redirect('/instruments')
         console.log(err)
+        req.flash('error','Failed to delete instrument');
+        res.redirect(`/instruments/${req.params.id}`)
     }
 })
 
@@ -118,13 +116,13 @@ router.delete('/:id', async (req, res)=>{
 
 
 function photoSaver(instrument, photoEncoded) {
-    if (photoEncoded == null) return
-    const photo = JSON.parse(photoEncoded)
-    if (photo != null && imageMimeTypes.includes(photo.type)) {
-      instrument.image = new Buffer.from(photo.data, 'base64')
-      instrument.imageType = photo.type
+    if (photoEncoded == null) return  //if the file is empty return
+    const photo = JSON.parse(photoEncoded) //then we're going to parse the information from the json
+    if (photo != null && imageMimeTypes.includes(photo.type)) {   //if the photo is not null and if the image type is not one we take, like video
+      instrument.image = new Buffer.from(photo.data, 'base64') //is taking the encoded file and is storing the path for us to use it to display the image
+      instrument.imageType = photo.type //instrument.imageType is going to be the file tipe we have from the form and is going to send this to the new Instrument we're making
     }
 
   }
 
-module.exports = router;
+module.exports = router; 

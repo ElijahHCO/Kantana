@@ -42,7 +42,7 @@ body{
 
 .fileUpload{
     width: 350px;
-    height: 680px;
+    height: 600px;
     margin-top: 1rem;
 
 }
@@ -74,7 +74,6 @@ input:focus, textarea:focus{
     display: flex;
     justify-content: space-around;
     justify-items: center;
-    height: ;
 }
 
 .form-with-fields{

@@ -18,28 +18,29 @@
         <%- include('../partials/messages') %>
         <%- include('../partials/nav') %>
         <section class="box">
+            <div>
+                <h1>Edit Instrument Listing:</h1>
+                <%- include('../partials/messages') %>
+            </div>
             <form action="/instruments/<%=instrument._id%>?_method=PUT" method="POST" class="form-contents"><br>
                 <div class="actual-form">
                     <div class="form-with-fields">
-                        <label for="name"></label>
                         <input type="text" name="name" placeholder="New" required value="<%= instrument.name%>"><br>
-                        <label for="price"></label><br>
                         <input type="number" name="price" placeholder="Price" value="<%= instrument.price%>"><br>
-                        <label for="description" placeholder="Description"></label><br>
-                        <textarea name="description" id="" cols="19" rows="15" placeholder="Description"  required><%= instrument.description%></textarea><br>
-                        <label for="location"></label><br>
-                        <input type="text" name="location" placeholder="Location" required value"<%= instrument.location%>">
+                        <textarea name="description" id="" cols="19" rows="17" placeholder="Description"
+                            required><%= instrument.description%></textarea><br>
+                        <input type="text" name="location" placeholder="Location" required
+                            value="<%= instrument.location%>">
                     </div>
                     <div class="fileUpload">
-                        <input type="file" class="filepond instrument-photo" name="photo"
-                            value="<%= instrument.imagePath %>">
+                        <input type="file" class="filepond instrument-photo" name="photo">
                     </div>
-                    </div>
-                    <button class="nasa-btn" type="submit">
-                        <div class="moving-button">
-                            Post!
-                        </div>
                 </div>
+                <button class="nasa-btn" type="submit">
+                    <div class="moving-button">
+                        Post!
+                    </div>
+                    </div>
                 </button>
         </section>
         </form>
