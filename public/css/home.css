@@ -26,6 +26,8 @@ body {
     overflow-y: scroll;
     padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
     box-sizing: content-box;
+    min-height: fit-content;
+    min-width: fit-content;
 }
 #profilePicture {
     max-height: 150px;
@@ -41,7 +43,8 @@ body {
     align-content: center;
 }
 #usernameDisplay {
-    font-size: 36px;
+    font-size: 3em;
+    text-align: center;
 }
 .instrumentList {
     display: flex;
@@ -86,7 +89,6 @@ body {
     height: 100%;
     transition: 1s;
     transform-style: preserve-3d;
-    cursor: pointer;
     position: relative;
 }
 .card_face {
@@ -120,3 +122,41 @@ body {
 .newinstrument-secction{
     width: 100vw;
 }
+
+.prof{
+    margin-bottom: 2em;
+}
+
+.head.prof-pic {
+    margin: .3em auto;
+}
+
+.head{
+    margin: .5em auto;
+}
+
+.card.single{
+    width: 500px;
+    height: 600px;
+}
+
+
+.option-button{
+    width: 20em;
+    height: 3em ;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center
+}
+
+.form-btn-inside{
+    width: 10em;
+    padding: 5px 1px;
+    border: none;
+    border-radius: 1em;
+    background-color: #7D83BF;
+}
+
+
+
+

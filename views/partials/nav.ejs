@@ -12,20 +12,20 @@
                 <div class="dropdown-content">
                     <ul id="profileButtons">
                         <li>
-                            <form action="/users/<%= userObject._id %>?_method=DELETE" method="post">
-                                <button class="form-link" type="submit">Delete Profile</button>
-                            </form>
-                        </li>
-                        <li>
-                            <form action="/users/logout" method="POST">
+                            <form  class="form-button" action="/users/logout" method="POST">
                                 <button class="form-link" id="logout" type="submit">Log Out</button>
                             </form>
                         </li>
                         <li>
-                           <a  class="nav-other-link" href="/users/edit/<%=userObject._id%>">Edit Profile</a>
+                           <a  class="nav-other-link" href="/users/edit/<%=userObject._id%>"><button class="form-link">Edit Profile</button></a>
                         </li>
                         <li>
-                            <a class="nav-other-link" href="/users/home">Go Back Home</a>
+                            <a class="nav-other-link" href="/users/home"><button class="form-link">Profile Home</button></a>
+                        </li>
+                        <li>
+                            <form class="form-button" action="/users/<%= userObject._id %>?_method=DELETE" method="post">
+                                <button class="form-link" type="submit">Delete Profile</button>
+                            </form>
                         </li>
                         </section>
                 </div>

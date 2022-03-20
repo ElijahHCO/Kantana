@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="/css/instrumentsShow.css">
+    <link rel="stylesheet" href="/css/home.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,26 +14,35 @@
     <main class="wrapper">
         <%- include('../partials/nav') %>
             <%- include('../partials/messages') %>
-            <li>
-                <div class = "card">
+            <section class="single-instrument">
+                <div class = "card  single">
                     <div class="card_inner">
                         <div class="card_face card_face--front">
                             <img src="<%= instrument.imagePath %>" alt="" class="head">
                             <h1><%= instrument.name %></h1>
-                            <h3>User: <%= instrument.username.username %> </h3>
+                            <h3><%= instrument.username.username %> </h3>
                             <p>$ <%= instrument.price %></p>
-                        </div>
-            </li>
-                <br><br><br><br>
-                    <% if(instrument.username.username == userObject.username){ %>
-                    <a href="/instruments/<%=instrument._id%>/edit"><button>Edit</button></a>
-                    <form action="/instruments/<%= instrument._id %>?_method=DELETE" method="POST">
-                        <button type="submit">Delete <%= instrument.name %>?</button>
-                    </form>
-                    <% } %>
-                        <a href="/instruments">Go to all instruments</a>
+                            <p class="descriptiion"><%= instrument.description %> </p>
+                            <% if(instrument.username.username == userObject.username){ %>
+                                <div class="option-button">
+                                    <a href="/instruments/<%=instrument._id%>/edit"><button class="form-btn-inside">Edit</button></a>
+                                    <form  class="option-form" action="/instruments/<%= instrument._id %>?_method=DELETE" method="POST">
+                                        <button  class="form-btn-inside"type="submit">Delete instrument?</button>
+                                    </form>
+                                    <% } %>
 
-                        <br>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>       
+                    <br><br><br><br>
+                        
+                            <a href="/instruments">Go to all instruments</a>
+    
+                            <br>
+            </section>
+      
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/js/instrumentsCss.js"></script>

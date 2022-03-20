@@ -43,46 +43,7 @@ span {
     height: 42px;
     margin-top: -1rem;
 }
-@media(max-width:768px) {
-    .hamburger{
-        display: block;
-    }
-    .hamburger.active .bar:nth-child(2){
-        opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(1){
-        transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.active .bar:nth-child(3){
-        transform: translateY(-8px) rotate(-45deg);
-    }
-    #top-nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        padding: 0 24px;
 
-    }
-    #nav-ul{
-        position: fixed;
-        display: flex;
-        left: -150%;
-        top: 15px;
-        width: 90%;
-        flex-direction: row;
-        background-color: transparent;
-        text-align: center;
-        transition: .3s;
-        gap: 0;
-    }
-    .nav-links {
-        margin: 16px 0;
-    }
-    #nav-ul.active{
-        left: 0;
-    }
-} 
 .nav-links {
     list-style: none;
     
@@ -122,7 +83,6 @@ a:link, a:visited {
     background-color: transparent;
     border: none;
     font-size: 16px;
-    padding: 5px 0;
 }
 
 .form-link{
@@ -133,4 +93,11 @@ a:link, a:visited {
     font-size: 16px;
     text-align: center;
     font-weight: 400;
+}
+
+.form-button{
+    height: 20px;
+}
+.form-button button{
+    color: white;
 }

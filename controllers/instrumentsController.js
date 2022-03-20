@@ -90,6 +90,7 @@ router.get('/:id/edit', async (req, res)=>{
 // /instruments/:id
 // UPDATE THE instrument WITH THE SPECIFIC ID
 router.put('/:id', async (req, res)=>{
+    photoSaver(req.body, req.body.photo)
    try{
         await Instrument.findByIdAndUpdate(req.params.id, req.body)
         res.redirect(`/instruments/${req.params.id}`)

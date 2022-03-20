@@ -12,17 +12,15 @@
 body{
     padding: 0;
     min-width: 375px;
-    max-width: 1600px;
 }
 .form-contents{
-    width: 375px;
-    margin-right: min(auto, 5px);
-
+    max-width: 68em;
+    margin-top: 10em;
 }
 
 .nasa-btn{
     border: none;
-    background-color: #666;
+    background-color: #7D83BF;
     color: white;
     border-radius: 10px;
     width: 350px;
@@ -44,19 +42,22 @@ body{
 
 .fileUpload{
     width: 350px;
-    height: 600px;
+    height: 680px;
     margin-top: 1rem;
-    margin-right: 8rem;
 
 }
 
 input[type="text"], input[type="number"] , textarea {
-    display: -webkit-inline-flex;
-    background-color: #F2F0F380;
     width: 350px;
-    padding: 5px 15px;
-    font-size: 1.1rem;
     border: 1px white solid;
+    background-color: #F2F0F380;
+    border: none;
+    font-size: 1rem;
+    padding: .8em 0.3em;
+    border-radius: .8em;
+    margin: .4em;
+    text-align: center;
+
 }
 input:focus, textarea:focus{
     outline: none;
@@ -65,4 +66,32 @@ input:focus, textarea:focus{
     background-color: #F2F0F380;;
     border: 1px solid #F2F0F380;;
     font-size: inherit;
+    height: 680px;
+
+}
+
+.actual-form{
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    height: ;
+}
+
+.form-with-fields{
+    margin: .7em 1em 0 auto;
+}
+
+::placeholder {
+    color: white;
+    text-align: center;
+}
+.actual-form.height{ 
+    height: 680px;
+ 
+}
+
+.form-contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

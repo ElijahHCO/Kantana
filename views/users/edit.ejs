@@ -13,23 +13,23 @@
     <%- include('../partials/messages') %>
     <%- include('../partials/nav') %>
      
-    <section>
+    <section class="box">
 
     <form action="/users/edit/<%=userObject._id%>?_method=PUT" method="POST">
-         <input type="text" name="name" placeholder="Name" <% if(userObject.name){ %>
+         <input type="text" name="name" class="input-field" placeholder="Name" <% if(userObject.name){ %>
             value="<%=userObject.name%>" 
             <% } %> 
             required>
-         <input type="email" name="toppings" placeholder="Email" value="<%=userObject.email%>" required>
-         <input type="text" name="hobbies" placeholder="Hobbies" <% if(userObject.hobbies){ %>
+         <input type="email" name="toppings" placeholder="Email" class="input-field" value="<%=userObject.email%>" required>
+         <input type="text" name="hobbies" placeholder="Hobbies" class="input-field" <% if(userObject.hobbies){ %>
             value="<%=userObject.hobbies%>" 
             <% } %> 
             required>
-         <input type="text" name="city" placeholder="City" <% if(userObject.city){ %>
+         <input type="text" name="city" placeholder="City" class="input-field" <% if(userObject.city){ %>
             value="<%=userObject.city%>" 
             <% } %> 
             required>
-         <input type="text" name="state" placeholder="State" <% if(userObject.state){ %>
+         <input type="text" name="state" placeholder="State" class="input-field" <% if(userObject.state){ %>
             value="<%=userObject.state%>" 
             <% } %> 
             required>

@@ -28,14 +28,14 @@
 
 
 input{
-    padding: 2px;
     text-align: center;
     background-color: #F2F0F380;
     border: none;
     font-size: 1rem;
+    width: 350px;
 }
 .input-field{
-    padding: .8em 7em;
+    padding: .8em 0em .8em 0em;
     border-radius: .8em;
 }
 

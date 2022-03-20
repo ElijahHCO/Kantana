@@ -1,6 +1,12 @@
 
-<h4 class="error-message">
+
   <% if (messages.error) { %>
+    <h4 style="color: rgb(250, 250, 250);">
+
     <%= messages.error %>
-  <% } %>
-</h4>
+  </h4>
+  <% }else if(messages.success){ %>
+  <h4 style="color: whitesmoke;">
+    <%= messages.success %>
+  </h4>
+  <%}%>

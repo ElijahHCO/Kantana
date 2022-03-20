@@ -14,49 +14,80 @@
 
     <main class="wrapper">
         <%- include('../partials/nav') %>
-            <%- include('../partials/messages') %>
 
                 <div class="box">
                     <section class="userProfile">
                         <% if (messages.error) { %>
                             <%= messages.error %>
                                 <% } %>
-                                    <h1 id="usernameDisplay">
-                                        <%= userObject.name %>
-                                    </h1>
-                                    <h1>
-                                        <%= userObject.username %>
-                                    </h1>
-                                    <p> Hobbies:
-                                        <% userObject.hobbies.forEach((hobby, index)=> { %>
-                                            <%= hobby %>
-                                                <% if (index !=userObject.hobbies.length -1){ %>
-                                                    ,
+                                <article class="prof">
+                                    <div class = "card">
+                                        <div class="card_inner">
+                                            <div class="card_face card_face--front">
+                                                <h1 id="usernameDisplay">
+                                                    <%= userObject.name %>
+                                                </h1>
+                                                <h2>
+                                                    <%= userObject.username %>
+                                                </h2>
+                                                <h3> Hobbies:
+                                                    <% userObject.hobbies.forEach((hobby, index)=> { %>
+                                                        <%= hobby %>
+                                                            <% if (index !=userObject.hobbies.length -1){ %>
+                                                                ,
+                                                                <% } %>
+                                                                    <% }); %>
+                                                            </h3>
+                                                <% if(userObject.city){ %>
+                                                    <h3>
+                                                        <%= userObject.city %> , <%= userObject.state %>
+                                                    </h3>
                                                     <% } %>
-                                                        <% }); %>
-                                    </p>
-                                    <% if(userObject.city){ %>
-                                        <p>
-                                            <%= userObject.city %> , <%= userObject.state %>
-                                        </p>
-                                        <% } %>
+
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    
+                                    
+                                    
+                                           
+
+                                </article>
+ 
 
                     </section>
                     <section class="instrumentList">
+                        <a href="/instruments/new">Create A New Listing</a>
+
                         <h4>Items Currently for sale:</h4>
                         <% if(instruments){%>
-                            <ul class="itemsForSale">
+                            <ul class="instruments">
                                 <% instruments.forEach((instrument)=>{ %>
-                                    <li class="instruments"><a href="/instruments/<%=instrument._id%>">
-                                            <%=instrument.name%>
-                                        </a></li>
+                                    <a href="/instruments/<%=instrument._id%>">
+                                    <li>
+                                        <div class = "card">
+                                            <div class="card_inner">
+                                                <div class="card_face card_face--front">
+                                                    <img src="<%= instrument.imagePath %>" alt="" class="head">
+                                                    <h1><%= instrument.name %></h1>
+                                                    <h3><%= instrument.username.username %> </h3>
+                                                    <p>$ <%= instrument.price %></p>
+                                                </div>
+                                            </div>
+                                        </div>        
+                                    </li>
+                                </a>
                                     <% }) %>
+
                             </ul>
-                            <% } %>
+                          
 
 
 
                                 </a>
+                                <% }else{ %>
+                                    <h3> No Instruments for sale</h3>
+                                    <% } %> 
                     </section>
 
                 </div>

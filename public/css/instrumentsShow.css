@@ -70,3 +70,15 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
+
+.single-instrument{
+    margin-top: 3rem;
+    display: grid;
+
+}
+
+.descriptiion{
+    margin: 0 .5em ;
+    text-align: center;
+}
