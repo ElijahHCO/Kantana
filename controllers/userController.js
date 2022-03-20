@@ -1,7 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
 const Instrument = require("../models/instruments")
-console.log("===========================")
 const router = express();
 
 
@@ -42,6 +41,7 @@ router.get('/home', async (req, res)=> { //this one is to show the home page
       res.redirect(`/users/home`)
     }catch(err){
       console.log(err)
+      req.flash('error','Failed to update profile');
       res.redirect(`/users/home`)//if not possible sends you home
     }
   })
@@ -53,19 +53,17 @@ router.get('/home', async (req, res)=> { //this one is to show the home page
     res.locals.user = null; //deletes all local information
     req.logout(); //deletes the sessiosn
     req.session.destroy((err) => res.redirect('/home/login'));
-  
   })
   
   router.delete('/:id', async (req, res)=>{
     try{
-        await Instrument.deleteMany({username: req.session.passport.user })
+        await Instrument.deleteMany({username: req.session.passport.user }) // deletes user's existing items  
         await User.findByIdAndDelete(req.session.passport.user) //to delete user by their passport id
         req.logout();
         res.redirect('/home/register')
     }catch(err){
-      console.error(err)
       console.log(err)
-      req.flash('error','Unable to delte user D:');
+      req.flash('error','Failed to delete user D:');
       res.redirect('/users/home')
     }
   })
