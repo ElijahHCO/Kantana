@@ -47,7 +47,7 @@ Kantata is an app for EVERYONE to buy and sell instruments anywhere in the world
 
 - Visit our application [Kantata](https://kantata1.herokuapp.com/home)
 
-- 📫 How to reach us **Kantata@gmail.com**
+- 📫 How to reach us **Kantata.app@gmail.com**
 
 - Instructions: Try our app by clicking the link above ^ **Welcome to Kantata. Click SIGN UP and create your account - Once you are signed up you can explore instruments for sale, post instruments to sell and edit your profile.**
 
@@ -58,13 +58,18 @@ Connect with me:
 Languages and Tools:
  <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://expressjs.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://www.adobe.com/in/products/illustrator.html" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="illustrator" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://www.photoshop.com/en" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg" alt="photoshop" width="40" height="40"/> </a> </p>
 
+Mongoose is our DBs, Sessions to store the user’s information, Store to keep the cookies, Flash to display messages.
 
+
+We used Passport for user authentification, specifically the Local Strategy, we had plans to use more strategies like Google or Facebook, passport stores the user into session, the way it works is taking the users input, comparing the credentials, verifying the credentials, and goes into serializing the user storing it into a cookie.
+
+According to the FilePond Documentation: “FilePond is a JavaScript library that brings silky smooth drag n' drop file uploading. These docs they will help install, setup, modify and extend FilePond.” The way we used it is to upload the files with previews, and then it would create the path so we can use it throughout the app. We take the image and then verify the type, then check if we take that image file we’re going to pass it to a function and parse the data, and then we take it to our model and store it.
 
 Notes:
 We accomplished most of our goals that we started with, but unfortunately had to sideline the music-sharing and music-collaboration sections of the app until after project due date. This was to ensure we had a functioning app Monday for the presentation. 
 
 We would also like to add a profile-picture feature so users can personailze their profile pages in the future.
 
-Google login was and is a feature we hope to add as well, but it caused some problems with userabiltity because of the inherent nature of logging in with Google does not create a password. This is something we did not feel was crucial to meeting Monday project deadline and shelved it for now.
+Google login was and is a feature we hope to add as well
 
-The obvious next step for the app would be implementing a function to actually buy/sell the instruments listed on the site. As of now it is effectivly a newspaper for users to see listings and directly contact the user selling to inquire about actually purchasing off the site.
+The obvious next step for the app would be implementing a function to actually buy/sell the instruments listed on the site. As of now it is effectivly a newspaper for users to see listings and directly contact the user selling to inquire about actually purchasing.
