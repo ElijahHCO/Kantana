@@ -6,7 +6,6 @@ const router = express();
 const userExists = require('../middleware/users/userExists')
 const {hashedPassword} = require('../middleware/users/passwordHasser');
 const backToProfile = require('../middleware/users/backToProfile')
-
 //log in
 router.post('/login', //this function send the log in request to the passport middleware
   passport.authenticate('local', { //"local" means with your credentials  is going to the localStrategy.js
